@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Course Descriptions</title>
+	<meta name="description" content="Course Descriptions">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	 crossorigin="anonymous">
+	 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script>
+	<script src="js/mustache.min.js" type="text/javascript"></script>
+	<script src="js/mustache-variables.js" type="text/javascript"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	 crossorigin="anonymous"></script>
+</head>
+
+
+
+
+<body style="background:#fff;padding:30px;">
+	<!--[if lt IE 7]>
+			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+	<h1>Course Descriptions</h1>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-3 control-label" for="search">Search Courses</label>
+			<div class="col-sm-9">
+				<input class="form-control" id="search" name="search" placeholder="Start typing. Enter course name, family, or type" type="text"
+				 data-list=".list" autocomplete="off">
+			</div>
+		</div>
+	</form>
+	<div class="course-key">
+		<h4>Course Frequency Key</h4>
+		<ul class="list-unstyled">
+			<li>
+				<span class="badge">A</span> = offered every semester</li>
+			<li>
+				<span class="badge">B</span> = generally offered once or twice every academic year</li>
+			<li>
+				<span class="badge">C</span> = generally offered every two or three academic years</li>
+			<li>
+				<span class="badge">D</span> = offered when student interest and faculty availability allow</li>
+		</ul>
+	</div>
+	<div id="all_courses">
+		<script id="course-script" type="text/template">
+				{{#courses}}
+					
+					
+					<div class="contents list" style="margin-top:50px;">
+					
+					<h2>First Year Class Courses</h2>	
+						
+						{{#first_year}}
+							
+						<div class="panel">
+							
+							<button class="btn btn-default list-group-item" type="button" data-toggle="collapse" data-target="#{{id}}" aria-expanded="false" aria-controls="{{id}}">
+							
+								<span class="pull-left"><strong>{{title}}&nbsp;<span class="badge">{{frequency_key}}</span></strong></span>
+								<span class="pull-right label label-default">{{type}}</span>
+							
+							</button>
+							
+							<div class="collapse" id="{{id}}">
+								<div class="well">
+									<h2>{{title}}</h2>
+									<p><strong>Course Type:</strong> <em>{{type}}</em><br /><strong>Family:</strong> <em>{{family}}</em></p>
+									
+									<p><strong>Description:</strong></p>
+									<div>
+										{{#html}}
+											{{{html}}}
+										{{/html}}
+										{{^html}}
+											<p>See professor for course description.</p> 
+										{{/html}}
+									</div>
+								</div>
+							</div>
+						</div>
+						{{/first_year}}
+					
+					
+					<h2>Upper Class Courses</h2>	
+						
+						{{#upper_class}}
+							
+						<div class="panel">
+							
+							<button class="btn btn-default list-group-item" type="button" data-toggle="collapse" data-target="#{{id}}" aria-expanded="false" aria-controls="{{id}}">
+							
+								<span class="col-md-6" style="white-space: normal;"><strong>{{title}}&nbsp;<span class="badge">{{frequency_key}}</span></strong></span>
+								<span class="col-md-4" style="white-space: normal;"><p><em>{{family}}</em></p></span>
+								<span class="col-md-2"><p class="label label-default pull-right">{{type}}</span></span>
+							
+							</button>
+							
+							<div class="collapse" id="{{id}}">
+								<div class="well">
+									<h2>{{title}}</h2>
+									<p><strong>Course Type:</strong> <em>{{type}}</em><br /><strong>Family:</strong> <em>{{family}}</em></p>
+									
+									<p><strong>Description:</strong></p>
+									<div>
+										{{#html}}
+											{{{html}}}
+										{{/html}}
+										{{^html}}
+											<p>See professor for course description.</p> 
+										{{/html}}
+									</div>
+								</div>
+							</div>
+						</div>
+						{{/upper_class}}
+						
+				
+					<h2>Clinic and Externships</h2>	
+						{{#clinic_externships}}
+							
+						<div class="panel">
+							
+							<button class="btn btn-default list-group-item" type="button" data-toggle="collapse" data-target="#{{id}}" aria-expanded="false" aria-controls="{{id}}">
+							
+								<span class="pull-left"><strong>{{title}}&nbsp;<span class="badge">{{frequency_key}}</span></strong></span>
+								<span class="pull-right label label-default">{{type}}</span>
+							
+							</button>
+							
+							<div class="collapse" id="{{id}}">
+								<div class="well">
+									<h2>{{title}}</h2>
+									<p><strong>Course Type:</strong> <em>{{type}}</em><br /><strong>Family:</strong> <em>{{family}}</em></p>
+									
+									<p><strong>Description:</strong></p>
+									<div>
+										{{#html}}
+											{{{html}}}
+										{{/html}}
+										{{^html}}
+											<p>See professor for course description.</p> 
+										{{/html}}
+									</div>
+								</div>
+							</div>
+						</div>
+						{{/clinic_externships}}	
+						
+						
+					<h2>Journals</h2>	
+						{{#journals}}
+							
+						<div class="panel">
+							
+							<button class="btn btn-default list-group-item" type="button" data-toggle="collapse" data-target="#{{id}}" aria-expanded="false" aria-controls="{{id}}">
+							
+								<span class="pull-left"><strong>{{title}}&nbsp;<span class="badge">{{frequency_key}}</span></strong></span>
+								<span class="pull-right label label-default">{{type}}</span>
+							
+							</button>
+							
+							<div class="collapse" id="{{id}}">
+								<div class="well">
+									<h2>{{title}}</h2>
+									<p><strong>Course Type:</strong> <em>{{type}}</em><br /><strong>Family:</strong> <em>{{family}}</em></p>
+									
+									<p><strong>Description:</strong></p>
+									<div>
+										{{#html}}
+											{{{html}}}
+										{{/html}}
+										{{^html}}
+											<p>See professor for course description.</p> 
+										{{/html}}
+									</div>
+								</div>
+							</div>
+						</div>
+						{{/journals}}
+						
+						<h2 id="Competitions">Competitions</h2>	
+						{{#competitions}}
+							
+						<div class="panel">
+							
+							<button class="btn btn-default list-group-item" type="button" data-toggle="collapse" data-target="#{{id}}" aria-expanded="false" aria-controls="{{id}}">
+							
+								<span class="pull-left"><strong>{{title}}&nbsp;<span class="badge">{{frequency_key}}</span></strong></span>
+								<span class="pull-right label label-default">{{type}}</span>
+							
+							</button>
+							
+							<div class="collapse" id="{{id}}">
+								<div class="well">
+									<h2>{{title}}</h2>
+									<p><strong>Course Type:</strong> <em>{{type}}</em><br /><strong>Family:</strong> <em>{{family}}</em></p>
+									
+									<p><strong>Description:</strong></p>
+									<div>
+										{{#html}}
+											{{{html}}}
+										{{/html}}
+										{{^html}}
+											<p>See professor for course description.</p> 
+										{{/html}}
+									</div>
+								</div>
+							</div>
+						</div>
+						{{/competitions}}				
+					
+					</div>
+					
+				{{/courses}}
+		</script>
+	</div>
+
+	<script type="text/javascript" src="js/jquery.hideseek.min.js"></script>
+	<script type="text/javascript" src="js/initializers.js"></script>
+
+</body>
+
+</html>
